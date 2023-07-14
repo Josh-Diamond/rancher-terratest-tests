@@ -9,7 +9,7 @@ ENV PATH ${PATH}:/root/go/bin
 
 ENV WORKSPACE ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests
 
-WORKDIR $WORKSPACE/terratest/cluster
+WORKDIR $WORKSPACE/terratest
 
 COPY [".", "$WORKSPACE"]
 
