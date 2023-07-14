@@ -4,8 +4,8 @@ USER root
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
 # Configure Go
-ENV GOPATH /root/go
-ENV PATH ${PATH}:/root/go/bin
+# ENV GOPATH /root/go
+# ENV PATH ${PATH}:/root/go/bin
 
 ENV WORKSPACE ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests
 
