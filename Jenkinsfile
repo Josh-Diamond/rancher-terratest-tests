@@ -15,17 +15,19 @@ pipeline {
     }
 
     stage('Run Build Module Test') {
-      steps {
-        script {
-          // Define dockerImage by building an image or pulling from registry
-          def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
+        steps {
+            dir('terratest/cluster') {
+                script {
+                    // Define dockerImage by building an image or pulling from registry
+                    def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
 
-          dockerImage.inside() {
-            sh "export CATTLE_TEST_CONFIG=config.yml"
-            sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
-          }
+                    dockerImage.inside() {
+                    sh "export CATTLE_TEST_CONFIG=config.yml"
+                    sh "go test -v -timeout 1h -run ${params.TEST_CASE}"
+                    }
+                }
+            }
         }
-      }
     }
   }
 
