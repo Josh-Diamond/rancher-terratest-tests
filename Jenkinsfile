@@ -9,7 +9,6 @@ pipeline {
           writeFile file: 'config.yml', text: params.CONFIG
 
           // Build the Docker image with ARG for config.yml
-          sh "sudo su"
           sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
         }
       }
