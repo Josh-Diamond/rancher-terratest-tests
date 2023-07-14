@@ -1,5 +1,6 @@
 FROM golang:1.19
 
+USER root
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
 # Configure Go
