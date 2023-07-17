@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-    stage('Run Build Module Test') {
+    stage('Run Module Test') {
         steps {
             dir('terratest') {
                 script {
