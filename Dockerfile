@@ -4,7 +4,7 @@ USER root
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
 # Create the Go module cache directory
-RUN mkdir -p $GOPATH/pkg/mod && chomod -R 777 $GOPATH/pkg/mod
+RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 
 # Configure Go
 ENV GOPATH /root/go
