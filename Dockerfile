@@ -3,13 +3,8 @@ FROM golang:1.19
 USER root
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
-
 # Create the Go module cache directory
-RUN mkdir -p $GOPATH/pkg/mod
-
-# Set ownership and permissions for the Go module cache directory
-RUN chown -R root:root $GOPATH/pkg/mod
-
+RUN mkdir -p $GOPATH/pkg/mod && chomod -R 777 $GOPATH/pkg/mod
 
 # Configure Go
 ENV GOPATH /root/go
