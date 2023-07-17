@@ -8,7 +8,7 @@ RUN mkdir -p /.cache && chmod -R 777 /.cache
 RUN mkdir -p $GOPATH/pkg/mod
 
 # Set ownership and permissions for the Go module cache directory
-RUN chown -R root:jenkins $GOPATH/pkg/mod
+RUN chown -R 777 $GOPATH/pkg/mod
 
 
 # Configure Go
