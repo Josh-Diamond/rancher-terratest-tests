@@ -4,9 +4,9 @@ USER root
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
 # Create the Go module cache directory
-RUN mkdir -p $GOPATH/pkg/mod
+RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 
-RUN chown -R root:jenkins $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
+RUN chown -R root:root $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
 
 # Configure Go
 ENV GOPATH /root/go
