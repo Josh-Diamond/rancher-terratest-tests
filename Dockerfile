@@ -6,6 +6,8 @@ RUN mkdir -p /.cache && chmod -R 777 /.cache
 # Create the Go module cache directory
 RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 
+RUN chown -R jkeslar:jenkins $GOPATH/pkg/mod
+
 # Configure Go
 ENV GOPATH /root/go
 ENV PATH ${PATH}:/root/go/bin
