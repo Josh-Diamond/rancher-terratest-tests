@@ -6,11 +6,15 @@ pipeline {
       steps {
         script {
           // Write the CONFIG parameter to a file
-            writeFile file: 'config.yml', text: params.CONFIG
+            // writeFile file: 'config.yml', text: params.CONFIG
+                  def filename = "config.yml"
+                  def configContents = env.CONFIG
+
+                  writeFile file: filename, text: configContents
+                  env.CATTLE_TEST_CONFIG = filename
 
           // Build the Docker image with ARG for config.yml
           sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
-          sh 'set CATTLE_TEST_CONFIG=config.yml'
         }
       }
     }
