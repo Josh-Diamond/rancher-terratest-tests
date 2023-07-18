@@ -7,7 +7,7 @@ pipeline {
         script {
           // Write the CONFIG parameter to a file
           writeFile file: 'config.yml', text: params.CONFIG
-        //   sh "go env"
+          sh "go env"
 
           // Build the Docker image with ARG for config.yml
           sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
