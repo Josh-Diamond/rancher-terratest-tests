@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-    stage('Build Docker image') {
+    stage('Run Module Test') {
       steps {
         script {
             // Define dockerImage by building an image or pulling from registry
