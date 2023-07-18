@@ -7,7 +7,7 @@ pipeline {
         script {
           // Write the CONFIG parameter to a file
             writeFile file: 'cattle-config.yaml', text: params.CONFIG
-            sh "${PWD}"
+
           // Build the Docker image with ARG for config.yml
           sh 'docker build --build-arg CONFIG_FILE=cattle-config.yaml -t my-app .'
         }
