@@ -1,8 +1,6 @@
 package terratest
 
 import (
-	"fmt"
-	"os"
 	"testing"
 
 	cleanup "github.com/josh-diamond/rancher-terratest-framework/functions/cleanup"
@@ -18,15 +16,6 @@ type ProvisionTestSuite struct {
 
 func (r *ProvisionTestSuite) TestProvision() (bool, error) {
 	r.T().Parallel()
-
-	// testing
-	dir, err := os.Getwd()
-    if err != nil {
-        fmt.Println("Error:", err)
-    } else {
-        fmt.Println("Current working directory:", dir)
-    }
-	// end testing
 
 	terraformOptions, result, err := terratest.Setup(r.T())
 	require.NoError(r.T(), err)
