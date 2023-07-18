@@ -9,10 +9,12 @@ RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 RUN chown -R root:root $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
 
 # Configure Go
-ENV GOPATH /root/go
-ENV PATH ${PATH}:/root/go/bin
+# ENV GOPATH /root/go
+# ENV PATH ${PATH}:/root/go/bin
 
-WORKDIR ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests/terratest
+ENV WORKSPACE ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests
+
+WORKDIR $WORKSPACE/terratest
 
 COPY [".", "$WORKSPACE"]
 
