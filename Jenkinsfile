@@ -14,22 +14,36 @@ pipeline {
       }
     }
 
-    stage('Run Module Test') {
-        steps {
-            dir('terratest') {
-                script {
-                    // Define dockerImage by building an image or pulling from registry
-                    def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
+    stage('Build Docker image') {
+      steps {
+        script {
+            // Define dockerImage by building an image or pulling from registry
+            def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
 
-                    dockerImage.inside() {
-                    sh "go env"
-                    sh "export CATTLE_TEST_CONFIG=config.yml"
-                    sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./cluster"
-                    }
-                }
+            dockerImage.inside() {
+            sh "export CATTLE_TEST_CONFIG=config.yml"
+            sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
         }
+      }
     }
+
+    // stage('Run Module Test') {
+    //     steps {
+    //         dir('terratest') {
+    //             script {
+    //                 // Define dockerImage by building an image or pulling from registry
+    //                 def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
+
+    //                 dockerImage.inside() {
+    //                 sh "go env"
+    //                 sh "export CATTLE_TEST_CONFIG=config.yml"
+    //                 sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./cluster"
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
   }
 
   post {
