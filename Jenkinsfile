@@ -7,7 +7,7 @@ pipeline {
         script {
           // Write the CONFIG parameter to a file
             // writeFile file: 'config.yml', text: params.CONFIG
-                  def filename = "config.yml"
+                  def filename = "cattle-config.yml"
                   def configContents = env.CONFIG
 
                   writeFile file: filename, text: configContents
