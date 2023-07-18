@@ -23,7 +23,7 @@ RUN go mod download && \
 
 COPY . .
 
-RUN chmod -R 777 ${WORKSPACE}/modules/cluster
+# RUN chmod -R 777 ${WORKSPACE}/modules/cluster
 
 # Configure Terraform
 ARG TERRAFORM_VERSION=0.13.7
