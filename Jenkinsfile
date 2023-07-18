@@ -6,10 +6,10 @@ pipeline {
       steps {
         script {
           // Write the CONFIG parameter to a file
-            writeFile file: 'config.yml', text: params.CONFIG
-
+            writeFile file: 'cattle-config.yaml', text: params.CONFIG
+            sh "${PWD}"
           // Build the Docker image with ARG for config.yml
-          sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
+          sh 'docker build --build-arg CONFIG_FILE=cattle-config.yaml -t my-app .'
         }
       }
     }
@@ -22,7 +22,7 @@ pipeline {
 
             dockerImage.inside() {
             sh "cat config.yml"
-            sh "export CATTLE_TEST_CONFIG=config.yml"
+            sh "export CATTLE_TEST_CONFIG=cattle-config.yaml"
             sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
         }
