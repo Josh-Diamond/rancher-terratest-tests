@@ -21,9 +21,8 @@ pipeline {
             def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
 
             dockerImage.inside() {
-            sh "cat config.yml"
-            // sh "export CATTLE_TEST_CONFIG=config.yml"
-            // sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
+            sh "export CATTLE_TEST_CONFIG=config.yml"
+            sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
         }
       }

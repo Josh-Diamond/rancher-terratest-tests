@@ -14,7 +14,7 @@ RUN chown -R root:root $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
 
 ENV WORKSPACE ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests
 
-WORKDIR $WORKSPACE/terratest
+WORKDIR $WORKSPACE
 
 COPY [".", "$WORKSPACE"]
 
