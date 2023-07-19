@@ -9,8 +9,7 @@ pipeline {
             writeFile file: 'config.yml', text: params.CONFIG
 
           // Build the Docker image with ARG for config.yml
-        //   sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
-          sh 'docker build -t my-app .'
+          sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
         }
       }
     }
@@ -22,7 +21,7 @@ pipeline {
             def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
 
             dockerImage.inside() {
-            sh "export CATTLE_TEST_CONFIG=${params.CONFIG}"
+            sh "export CATTLE_TEST_CONFIG=config.yml"
             sh "printenv"
             sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
