@@ -14,7 +14,7 @@ pipeline {
                   env.CATTLE_TEST_CONFIG = filename
 
           // Build the Docker image with ARG for config.yml
-          sh 'docker build -t my-app .'
+          sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
         }
       }
     }
