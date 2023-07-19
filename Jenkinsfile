@@ -22,6 +22,8 @@ pipeline {
 
             dockerImage.inside() {
             sh "cat config.yml"
+            sh "ls"
+            sh "pwd"
             sh "printenv"
             sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
