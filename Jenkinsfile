@@ -15,7 +15,7 @@ pipeline {
                 //   env.CATTLE_TEST_CONFIG = filename
 
                 dir("./terratest/cluster") {
-                  def rootPath = "/root/go/src/github.com/Josh-Diamond/rancher-terratest-tests/"
+                  def rootPath = "/go/src/github.com/Josh-Diamond/rancher-terratest-tests/"
                   def filename = "config.yml"
                   def configContents = env.CONFIG
 
