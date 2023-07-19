@@ -7,7 +7,8 @@ pipeline {
         script {
           // Write the CONFIG parameter to a file
             writeFile file: 'config.yml', text: params.CONFIG
-            env.CATTLE_TEST_CONFIG='config.yml'
+            env.CATTLE_TEST_CONFIG='/var/lib/jenkins/workspace/tfp-automation/config.yml'
+
           // Build the Docker image with ARG for config.yml
           sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
         }
@@ -21,10 +22,6 @@ pipeline {
             def dockerImage = docker.image('my-app') // Assuming 'my-app' is your Docker image name
 
             dockerImage.inside() {
-            sh "cat config.yml"
-            sh "ls"
-            sh "pwd"
-            sh "printenv"
             sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
         }
