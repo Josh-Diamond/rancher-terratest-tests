@@ -7,11 +7,21 @@ pipeline {
         script {
           // Write the CONFIG parameter to a file
             // writeFile file: 'config.yml', text: params.CONFIG
+                //   def rootPath = "/root/go/src/github.com/Josh-Diamond/rancher-terratest-tests/"
+                //   def filename = "config.yml"
+                //   def configContents = params.CONFIG
+
+                //   writeFile file: filename, text: configContents
+                //   env.CATTLE_TEST_CONFIG = filename
+
+                dir("./terratest/cluster") {
+                  def rootPath = "/root/go/src/github.com/Josh-Diamond/rancher-terratest-tests/"
                   def filename = "config.yml"
-                  def configContents = params.CONFIG
+                  def configContents = env.CONFIG
 
                   writeFile file: filename, text: configContents
-                  env.CATTLE_TEST_CONFIG = filename
+                  env.CATTLE_TEST_CONFIG = rootPath+filename
+                }
 
           // Build the Docker image with ARG for config.yml
           sh 'docker build --build-arg CONFIG_FILE=config.yml -t my-app .'
