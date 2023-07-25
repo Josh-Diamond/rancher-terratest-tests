@@ -2,15 +2,15 @@ FROM golang:1.19
 
 USER root
 
+# Configure Go
+ENV GOPATH /root/go
+
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
 RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 
 RUN chown -R root:root $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
 
-# Configure Go
-ENV GOPATH /root/go
-ENV PATH ${PATH}:/root/go/bin
 
 ENV WORKSPACE ${GOPATH}/src/github.com/Josh-Diamond/rancher-terratest-tests
 
