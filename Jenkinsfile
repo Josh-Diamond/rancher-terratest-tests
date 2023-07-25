@@ -6,7 +6,7 @@ pipeline {
       steps {
         script {
             writeFile file: 'config.yml', text: params.CONFIG
-            env.CATTLE_TEST_CONFIG='/var/lib/jenkins/workspace/tfp-automation/config.yml'
+            env.CATTLE_TEST_CONFIG='/home/jenkins/workspace/rancher_qa/tfp-automation/config.yml'
             sh 'docker build --build-arg CONFIG_FILE=config.yml -t tfp-automation .'
         }
       }
