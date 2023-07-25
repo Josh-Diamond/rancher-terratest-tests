@@ -1,9 +1,9 @@
 FROM golang:1.19
 
 USER root
+
 RUN mkdir -p /.cache && chmod -R 777 /.cache
 
-# Create the Go module cache directory
 RUN mkdir -p $GOPATH/pkg/mod && chmod -R 777 $GOPATH/pkg/mod
 
 RUN chown -R root:root $GOPATH/pkg/mod && chmod -R g+rwx $GOPATH/pkg/mod
@@ -22,8 +22,6 @@ RUN go mod download && \
     go install gotest.tools/gotestsum@latest
 
 COPY . .
-
-# RUN chmod -R 777 ${WORKSPACE}/modules/cluster
 
 # Configure Terraform
 ARG TERRAFORM_VERSION=0.13.7
