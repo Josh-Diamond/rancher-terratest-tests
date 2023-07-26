@@ -25,11 +25,11 @@ pipeline {
     }
   }
 
-  post {
-    always {
-      sh 'docker rm -f tfp-automation || true'
-      sh 'docker rmi tfp-automation || true'
-      cleanWs() // Not available in Rancher environment
-    }
-  }
+//   post {
+//     always {
+//       sh 'docker rm -f tfp-automation || true'
+//       sh 'docker rmi tfp-automation || true'
+//       cleanWs() // Not available in Rancher environment
+//     }
+//   }
 }
