@@ -17,7 +17,6 @@ pipeline {
         script {
             def dockerImage = docker.image('tfp-automation')
             dockerImage.inside() {
-                sh "pwd"
                 sh "go test -v -timeout 1h -run ${params.TEST_CASE} ./terratest/cluster"
             }
         }
