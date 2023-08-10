@@ -3,8 +3,8 @@ package terratest
 import (
 	"testing"
 
-	cleanup "github.com/josh-diamond/rancher-terratest-framework/functions/cleanup"
-	terratest "github.com/josh-diamond/rancher-terratest-framework/functions/test"
+	cleanup "github.com/rancher/tfp-automation/functions/cleanup"
+	terratest "github.com/rancher/tfp-automation/functions/test"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"

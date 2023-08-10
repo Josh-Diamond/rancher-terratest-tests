@@ -17,7 +17,7 @@ require (
 	k8s.io/apimachinery v0.25.4 // indirect
 )
 
-require github.com/josh-diamond/rancher-terratest-framework v0.0.0-20230627215301-f8d29ca9451f
+require github.com/rancher/tfp-automation v0.0.0-20230809214753-73e576db407e
 
 require (
 	cloud.google.com/go v0.105.0 // indirect

@@ -3,7 +3,7 @@ package terratest
 import (
 	"testing"
 
-	terratest "github.com/josh-diamond/rancher-terratest-framework/functions/test"
+	terratest "github.com/rancher/tfp-automation/functions/test"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
